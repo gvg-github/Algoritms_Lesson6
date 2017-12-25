@@ -83,16 +83,26 @@ class BinarySearchTree {
         remove(root, key);
     }
 
-    void print(Node t) {
+    void print(Node t, int mode) {
         if (t != null) {
-            print(t.l);
-            System.out.print(t.key + ":" + t.value + " ");
-            print(t.r);
+            if (mode == 1) {
+                System.out.print(t.key + ":" + t.value + " ");
+                print(t.l, mode);
+                print(t.r, mode);
+            } else if (mode == 2) {
+                print(t.l, mode);
+                System.out.print(t.key + ":" + t.value + " ");
+                print(t.r, mode);
+            } else if (mode == 3) {
+                print(t.l, mode);
+                print(t.r, mode);
+                System.out.print(t.key + ":" + t.value + " ");
+            }
         }
     }
 
-    public void print() {
-        print(root);
+    public void print(int mode) {
+        print(root, mode);
         System.out.println();
     }
 }
